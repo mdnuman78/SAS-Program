@@ -62,7 +62,7 @@ OPTIONS MPRINT MLOGIC LS = 150;
 %MACRO c_attrib(dataset = , path = , xlsx_file = , from = , del =  );
 
 
-	%******************************************************************;
+  %******************************************************************;
   %*** Importing "Dataset" sheet from the xlsx specification file.***;
   %******************************************************************;
 
@@ -71,16 +71,16 @@ OPTIONS MPRINT MLOGIC LS = 150;
 	RUN;
 
 
-	%******************************************************************;
+  %******************************************************************;
   %*** Key Variable: Getting dataset descriptions (LABEL) and key ***;
   %*** variables.                                                 ***;
   %***                                                            ***;
   %*** Checking: Checking if the main dataset information (Key    ***;
-	%*** Variable) are are in the "Dataset" sheet from the xlsx     ***;
+  %*** Variable) are are in the "Dataset" sheet from the xlsx     ***;
   %*** specification file.                                        ***;
   %******************************************************************;
 
-	DATA _NULL_;
+   DATA _NULL_;
 	  LENGTH key $100;
     SET spec_datasets END = eof;
 
@@ -106,7 +106,7 @@ OPTIONS MPRINT MLOGIC LS = 150;
 	RUN;
 
 
-	%******************************************************************;
+  %******************************************************************;
   %*** Abort macro if no information found in the "Dataset" sheet.***;
   %******************************************************************;
 
