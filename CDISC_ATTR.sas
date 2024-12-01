@@ -57,14 +57,8 @@ OPTIONS MPRINT MLOGIC LS=150;
 ******************************************************************;
 %MACRO c_attrib(dataset=, path=, xlsx_file=, from=, del=);
 
-<<<<<<< HEAD
 	%******************************************************************;
 	%*** Importing "Dataset" sheet from the xlsx specification file.***;
-=======
-  %******************************************************************;
-  %*** Importing "Dataset" sheet from the xlsx specification file.***;
-  %******************************************************************;
->>>>>>> efae65bddb32a9cef62615b77275a69bd4a37b70
 
 	%******************************************************************;
 	PROC IMPORT DATAFILE="&path.\&xlsx_file." OUT=spec_datasets DBMS=xlsx
@@ -72,7 +66,6 @@ OPTIONS MPRINT MLOGIC LS=150;
 		SHEET='Datasets';
 	RUN;
 
-<<<<<<< HEAD
 	%******************************************************************;
 	%*** Key Variable: Getting dataset descriptions (LABEL) and key ***;
 	%*** variables.                                                 ***;
@@ -80,25 +73,11 @@ OPTIONS MPRINT MLOGIC LS=150;
 	%*** Checking: Checking if the main dataset information (Key    ***;
 	%*** Variable) are are in the "Dataset" sheet from the xlsx     ***;
 	%*** specification file.                                        ***;
+
 	%******************************************************************;
 	DATA _NULL_;
 		LENGTH key $100;
 		SET spec_datasets END=eof;
-=======
-
-  %******************************************************************;
-  %*** Key Variable: Getting dataset descriptions (LABEL) and key ***;
-  %*** variables.                                                 ***;
-  %***                                                            ***;
-  %*** Checking: Checking if the main dataset information (Key    ***;
-  %*** Variable) are are in the "Dataset" sheet from the xlsx     ***;
-  %*** specification file.                                        ***;
-  %******************************************************************;
-
-   DATA _NULL_;
-	  LENGTH key $100;
-    SET spec_datasets END = eof;
->>>>>>> efae65bddb32a9cef62615b77275a69bd4a37b70
 
 		RETAIN flag 0;
 
@@ -121,7 +100,6 @@ OPTIONS MPRINT MLOGIC LS=150;
 
 	RUN;
 
-<<<<<<< HEAD
 	%******************************************************************;
 	%*** Abort macro if no information found in the "Dataset" sheet.***;
 	%******************************************************************;
@@ -129,16 +107,6 @@ OPTIONS MPRINT MLOGIC LS=150;
 		%PUT WARNING: Dataset %UPCASE(&dataset.) is not found in the "Dataset"
 			sheet in XLSX specification file. ;
 		%ABORT CANCEL;
-=======
-
-  %******************************************************************;
-  %*** Abort macro if no information found in the "Dataset" sheet.***;
-  %******************************************************************;
-
-	%IF &end_flag. = 0 %THEN %DO;
-	  %PUT WARNING: Dataset %UPCASE(&dataset.) is not found in the "Dataset" sheet in XLSX specification file. ;
-    %ABORT CANCEL;
->>>>>>> efae65bddb32a9cef62615b77275a69bd4a37b70
 	%END;
 
 	%******************************************************************;
